@@ -153,13 +153,20 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Run listing + 3 image variants in parallel
+    // Run listing + 3 image variants in parallel.
+    // Use higher-quality image model for the infographic (index 2) for legible text.
     const [listing, ...images] = await Promise.all([
       generateListing(body.imageBase64, body.category, body.notes),
-      ...IMAGE_PROMPTS.map((p) => generateImage(p, body.imageBase64).catch((e) => {
-        console.error("image gen failed:", e);
-        return null;
-      })),
+      ...IMAGE_PROMPTS.map((p, i) =>
+        generateImage(
+          p,
+          body.imageBase64,
+          i === 2 ? "google/gemini-3.1-flash-image-preview" : "google/gemini-2.5-flash-image"
+        ).catch((e) => {
+          console.error("image gen failed:", e);
+          return null;
+        })
+      ),
     ]);
 
     return new Response(
