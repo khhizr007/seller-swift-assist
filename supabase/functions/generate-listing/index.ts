@@ -38,9 +38,9 @@ const IMAGE_PROMPTS = [
   "Create a vibrant Meesho-style PRODUCT INFOGRAPHIC image (square, 1:1). Place this exact product centered on a clean light background (white or very soft pastel). Around the product, add 4-5 short feature callouts with thin connecting lines/arrows pointing to relevant parts of the product. Each callout should be a SHORT benefit or attribute in simple English (2-4 words max), e.g. 'Premium Fabric', 'Lightweight', 'Easy Wash', 'Trendy Design', 'Best Quality'. Use bold, highly legible sans-serif text in dark color, with small colorful icon accents (checkmarks, stars, sparkles) in Meesho pink/magenta (#F43397) and complementary colors. Keep typography crisp and perfectly spelled — no gibberish text. Modern Indian ecommerce marketing style, mobile-friendly, eye-catching. Do NOT alter the product's design, color, or shape.",
 ];
 
-async function generateImage(instruction: string, imageDataUrl: string): Promise<string | null> {
+async function generateImage(instruction: string, imageDataUrl: string, model = "google/gemini-2.5-flash-image"): Promise<string | null> {
   const data = await callAI({
-    model: "google/gemini-2.5-flash-image",
+    model,
     modalities: ["image", "text"],
     messages: [
       {
