@@ -77,11 +77,6 @@ export const AuthDialog = ({ open, onOpenChange }: AuthDialogProps) => {
         </div>
 
         <div className="space-y-4 p-8 pt-6">
-          <div className="rounded-2xl border border-primary/15 bg-primary/5 p-4 text-sm text-muted-foreground">
-            Demo account: <span className="font-semibold text-foreground">demo@meeshoboost.local</span> /{" "}
-            <span className="font-semibold text-foreground">demo1234</span>
-          </div>
-
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="auth-email">Email address</Label>
