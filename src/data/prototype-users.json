@@ -1,0 +1,9 @@
+[
+  {
+    "id": "demo-user",
+    "email": "demo@meeshoboost.local",
+    "password": "demo1234",
+    "name": "Demo Seller",
+    "createdAt": "2026-05-04T00:00:00.000Z"
+  }
+]
